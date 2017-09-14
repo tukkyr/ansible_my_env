@@ -1,0 +1,26 @@
+- hosts: targets
+  become: yes
+  tasks:
+        - file:
+            path: /home/centos/app
+            state: directory
+            owner: centos
+            group: centos
+            mode: 0755
+        
+        - copy:
+            src: package.json
+            dest: /home/centos/app/package.json
+            owner: centos
+            group: centos
+            mode: 0644
+
+        - script: /usr/bin/curl -sL https://rpm.nodesource.com/setup_8.x | /usr/bin/bash -
+
+        - yum:
+            name: nodejs
+
+        - npm:
+            path: /home/centos/app
+  roles:
+      - dev 

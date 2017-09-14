@@ -1,0 +1,4 @@
+Host ansible_remote
+HostName ec2-13-114-237-76.ap-northeast-1.compute.amazonaws.com 
+User centos
+IdentityFile ~/.aws/local_key.pem
