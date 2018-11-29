@@ -2,17 +2,17 @@
   become: yes
   tasks:
         - file:
-            path: /home/centos/app
+            path: /home/ec2-user/app
             state: directory
-            owner: centos
-            group: centos
+            owner: ec2-user
+            group: ec2-user
             mode: 0755
         
         - copy:
             src: package.json
-            dest: /home/centos/app/package.json
-            owner: centos
-            group: centos
+            dest: /home/ec2-user/app/package.json
+            owner: ec2-user
+            group: ec2-user
             mode: 0644
 
         - script: /usr/bin/curl -sL https://rpm.nodesource.com/setup_8.x | /usr/bin/bash -

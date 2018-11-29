@@ -1,8 +1,8 @@
 - file:
-    path: "/home/centos/{{item}}"
+    path: "/home/ec2-user/{{item}}"
     state: directory
-    owner: centos
-    group: centos
+    owner: ec2-user
+    group: ec2-user
     mode: 0755
   with_items:
     - .vim
@@ -32,25 +32,25 @@
     clone: yes
   become: no
   with_items:
-      - { repo: "https://github.com/Shougo/neobundle.vim", dest: "/home/centos/.vim/bundle/neobundle.vim" }
-      - { repo: "https://github.com/yyuu/pyenv.git", dest: "/home/centos/.pyenv" }
-      - { repo: "https://github.com/yyuu/pyenv-virtualenv.git", dest: "/home/centos/.pyenv/plugins/pyenv-virtualenv" }
-      - { repo: "https://github.com/vim/vim.git", dest: "/home/centos/vim" }
-      - { repo: "https://github.com/sstephenson/rbenv.git", dest: "/home/centos/.rbenv" }
-      - { repo: "https://github.com/sstephenson/ruby-build.git", dest: "/home/centos/.rbenv/plugins/ruby-build" }
+      - { repo: "https://github.com/Shougo/neobundle.vim", dest: "/home/ec2-user/.vim/bundle/neobundle.vim" }
+      - { repo: "https://github.com/yyuu/pyenv.git", dest: "/home/ec2-user/.pyenv" }
+      - { repo: "https://github.com/yyuu/pyenv-virtualenv.git", dest: "/home/ec2-user/.pyenv/plugins/pyenv-virtualenv" }
+      - { repo: "https://github.com/vim/vim.git", dest: "/home/ec2-user/vim" }
+      - { repo: "https://github.com/sstephenson/rbenv.git", dest: "/home/ec2-user/.rbenv" }
+      - { repo: "https://github.com/sstephenson/ruby-build.git", dest: "/home/ec2-user/.rbenv/plugins/ruby-build" }
 
 - copy:
     src: "{{item}}" 
-    dest: "/home/centos/{{item}}"
-    owner: centos
-    group: centos
+    dest: "/home/ec2-user/{{item}}"
+    owner: ec2-user
+    group: ec2-user
     mode: 0644
   with_items:
       - .vimrc
       - .tmux.conf
 
 - blockinfile:
-    dest: /home/centos/.bash_profile
+    dest: /home/ec2-user/.bash_profile
     content: |
         export PYENV_ROOT=$HOME/.pyenv
         export PATH=$PYENV_ROOT/bin:$PATH
