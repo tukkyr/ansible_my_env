@@ -25,6 +25,7 @@
     - sqlite-devel
     - openssl-devel
     - tmux
+    - libffi-devel
 
 - git:
     repo: "{{item.repo}}"
